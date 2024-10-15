@@ -3,7 +3,7 @@ data(LOS_model, package = "NHSRdatasets")
 LOS_data <-
   LOS_model |>
   dplyr::filter(Organisation %in% c("Trust1", "Trust2", "Trust3")) |>
-  dplyr::add_column(Sex = as.factor(sample(c("Male", "Female"),
+  tibble::add_column(Sex = as.factor(sample(c("Male", "Female"),
     size = 90, replace = TRUE
   ))) |>
   dplyr::rename(Area = Organisation) |>

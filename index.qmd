@@ -8,12 +8,26 @@ engine: knitr
 format: su-theme-revealjs
 filters:
   - webr
-footer: "link to slides"
+  - collapse-social-embeds
+footer: "[statsrhian.github.io/dacoe-everything-r](https://statsrhian.github.io/dacoe-everything-r)"
 ---
+
+<!--- TODO 
+
+- [ ] Maybe put exercises on another page?
+- [ ] Check for ALT 
+
+--->
 
 ## Hi I'm Rhian 👋
 
 :::: {.columns}
+
+::: {.column width='40%'}
+
+![alt](img/rd.jpg)
+
+:::
 
 ::: {.column width='60%'}
 
@@ -21,37 +35,22 @@ footer: "link to slides"
 - #RStats Nerd
 - Statistics PhD
 - Expert in R training & consultancy
-
-:::
-
-::: {.column width='40%'}
-
-TODO image 
-
 :::
 
 ::::
 
 
-::: {.notes}
 
-:::
+## The Strategy Unit  { .inverse, .center}
 
-
-## The Strategy Unit  { .inverse}
-
-Leading research, analysis and change from within the NHS
 
 ![](img/logo.png)
 
 
+There must be a better way
 
 
 ::: {.notes}
-
-
-* Analysis
-
 * Evaluation and impact assessment
 
 * Complex modelling
@@ -65,11 +64,15 @@ Leading research, analysis and change from within the NHS
 :::
 
 
-# Why R?
+# What & Why R? {.inverse}
 
-## What do you want to know?
+## 
 
-Menti
+
+```{=html}
+<iframe width="780" height="500" src="https://www.mentimeter.com/app/presentation/n/alp7qmy9cxh6exv78fcdw5f2fa2m6jux/present?question=pktjb8muvskg" title="Mentimeter"></iframe>
+```
+
 
 ## What is R?
 
@@ -148,121 +151,374 @@ You don't need to install R for today's session
 But I do have some snippets of code you can play with
 :::
 
-# Working with data
 
 ## Who uses R?
+
+
+
+## Can it work with other tools?
+
 
 ## Examples of R projects in the NHS
 
 ## Silly R
 
-## Goldacre Review / RAP
+## Reproducible Analytical Pipelines ⭐
 
-> It will be built using open source software for data management, analysis and visualisation (such as R or python) as this is standard, portable, and available to all for checking and re-use.
+> It will be built using open source software for data management, analysis and visualisation (such as R or python) as this is standard, portable, and available to all for checking and re-use. 
 
+--- [Goldacre Review 2022](https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis/better-broader-safer-using-health-data-for-research-and-analysis#executive-summary:~:text=It%20will%20be%20built%20using%20open%20source%20software%20for%20data%20management%2C%20analysis%20and%20visualisation%20(such%20as%20R%20or%20python)%20as%20this%20is%20standard%2C%20portable%2C%20and%20available%20to%20all%20for%20checking%20and%20re%2Duse.)
 
+## Can it work with my data?
 
-## Simple demo
+<!-- TODO logos for different data sources --->
 
-```r
-1 + 2
+:::{.notes}
+
+SQL
+databricks
+databases
+SPSS
+SAS
+CSV / Excel
+Cloud  e.g. Azure
+API
+:::
+
+# Let's go! 🚀
+
+## Length of Stay data
+
+```{r, setup R}
+#| echo: false
+library("dplyr")
+
+los_data <- read.csv('https://raw.githubusercontent.com/StatsRhian/dacoe-everything-r/refs/heads/main/LOS_data.csv')
+reactable::reactable(los_data)
 ```
 
-## Reading in data
+:::{.notes}
+Fictional data, adapted from {NHSRdatasets}
+We might want to ask questions such as
+- Which area has the most patients?
+- What is the longest length of stay in the data?
+- Is there a correlation between age and length of stay?
+:::
 
-- Show read_csv
-
-Works SQL / databricks / databases / SPSS etc
-API
-
-## WebR
+## Load in data
 
 ```{webr-r}
-#| message: false
-# Load library to manipualte
+#| warning: false
+# Load library to manipulate
 library(dplyr)
 
 # Download simple dataset
-canada_births_1991_2022 <- read.csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-09/canada_births_1991_2022.csv')
-head(canada_births_1991_2022)
+los_data <- read.csv('https://raw.githubusercontent.com/StatsRhian/dacoe-everything-r/refs/heads/main/LOS_data.csv')
+head(los_data)
 ```
 
-## testy
+## Watch me 👀
+
+```{r}
+#| echo: true
+# How many rows?
+nrow(los_data)
+
+# How old is the oldest person in the dataset?
+max(los_data$Age)
+
+# Whats the mean length of stay?
+mean(los_data$LOS)
+```
+
+## Your turn 💻
+
+Change the code below and click _Run_
 
 ```{webr-r}
+# How many columns?
+nrow(los_data)
 
-nrow(canada_births_1991_2022)
+# How old is the oldest person in the dataset?
+max(los_data$Age)
+
+# Whats the median length of stay?
+mean(los_data$LOS)
+
 ```
 
+::: {.callout-important}
+Capitalisation matters!
+:::
 
-## Simple summaries
+## Watch me 👀
 
-- summarise
+What is the mean length of stay for each sex?
+```{r}
+#| echo: true
+los_data |>
+  group_by(Sex) |>
+  summarise(mean_los = mean(LOS))
+```
 
-## Group by then summarise
+## Your turn 💻
 
+```{webr-r}
+#| warning: false
+# Calculate the median length of stay for each Area
 
-## Your turn
+names(los_data) # Reminder of the column names
 
-1. Instead of a mean, calculate the median for each group
+los_data |>
+  group_by(SOMETHING) |>
+  summarise(median_los = median(SOMETHING))
+```
 
-1. Instead of sex, group by age
+::: {.callout-note}
+Feel free to try grouping by other variables, or using other summarisation functions e.g. `mean()`, `min()`, `max()`, `sd()`
+::: 
 
 # Making pretty graphics
 
 ## Pretty plots
 
+- Many companies have adopted {ggplot2} for graphics, including the BBC and the FT
 - BBC
-
 - John burns 
+- NHS plotthedots?#
 
-- NHS plotthedots?
 
-## Maps too!
+## Professional quality graphics
 
-- Free spatial 
+
+![alt](img/bbc.png)
+
+
+## Professional quality graphics
+
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">NEW on coronavirus: many western countries may soon face Italy’s situation<br><br>Case numbers since outbreaks began in several countries have tracked a ~33% daily rise. This is as true for UK, France, Germany as Italy; the latter is simply further down the path <a href="https://t.co/VcSZISFxzF">https://t.co/VcSZISFxzF</a> <a href="https://t.co/xM6wXuMk4n">pic.twitter.com/xM6wXuMk4n</a></p>&mdash; John Burn-Murdoch (@jburnmurdoch) <a href="https://twitter.com/jburnmurdoch/status/1237737352879112194?ref_src=twsrc%5Etfw">March 11, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+
+
+
+
+::: {.twitter user=jburnmurdoch status_id=1237737352879112194}
+:::
+
+## Watch me 👀
+
+What is the mean length of stay for each sex?
+```{r}
+#| echo: true
+library(ggplot2)
+los_data |>
+  ggplot(aes(x = Age, y = LOS)) + 
+  geom_point()
+```
+
+What is the mean length of stay for each sex?
+```{r}
+#| echo: true
+library(ggplot2)
+los_data |>
+  ggplot(aes(x = Age, y = LOS)) + 
+  geom_point()
+```
+
+## Your turn 💻
+
+```{webr-r}
+#| message: false
+#| output-location: column
+library(ggplot2)
+los_data |>
+  ggplot(aes(x = Age, y = LOS)) + 
+  geom_point(col = "red")
+```
+
+1. Change the the colour of the points to "blue"
+
+1. Add the line `geom_smooth(method = "lm")`^[You'll need a `+` at the end of the previous line]
+
+## We can make maps too
+
+
+```{r}
+# Map of UK ICB coloured by something ?
+
+```
 
 ::: {.notes}
-
 No need for expensive GIS software
 :::
 
 
 ## Shiny apps 
 
-https://shiny.rstudio.com/gallery/
+- Interactive web applications
+- No need to learn
+- [Gallery](https://shiny.rstudio.com/gallery/)
 
-# Quarto
+
+:::{.notes}
+
+
+:::
+
+# Hello quarto 👋
+
+## What is quarto?
+
+![](img/quarto.jpg){fig-alt="The quarto logo: A circle cut into four quadrants next to the word quarto"}
+
+> An **open-source** scientific and technical **publishing** system
+
+## 
+
+![Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst.](img/quarto-flow.png){fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto."}
+
 
 These slides were made in Quarto!
 
-## Reports
+## Automating reports
 
-## Parameterisation
+::: {.incremental}
+- The data was wrong - can you re-run the analysis?
+- Your manager loves it - can you do it for another region?
+- Next month - do it all again.
+
+
+There must be a better way
+
+:::
+
+## Example report
+
+![](img/ne-april.png)
+
+[statsrhian.github.io/example-quarto-report/example-report.html](https://statsrhian.github.io/example-quarto-report/example-report.html)
+
+## Template based-reports
+
+```{r}
+#| eval: false
+#| code-line-numbers: "1-8|6-8|2-3"
+---
+title: "NHS Workforce Statistics for `r params$ics_name`"
+subtitle: "Data for `r params$month_year`"
+author: "Maria Garcia"
+date: "2023-09-28"
+params:
+  ics_name: "North East and North Cumbria"
+  month_year: "April 2023"
+---
+```
+
+## Interweave text and code 🧶
+
+. . .
+
+__Read in the data__
+
+```{r}
+#| eval: false
+filename = glue("NHS Workforce Statistics, {params$month_year} England and Organisation.xlsx")
+```
+
+. . .
+
+ __Clean the data__
+
+```{r}
+#| code-line-numbers: "3"
+#| eval: false 
+staff_group = 
+  staff_group |>
+  filter(`ICS name` == params$ics_name) |>
+  select(`Organisation name`, `Total`,
+         `HCHS Doctors`, `Nurses & health visitors`,
+         `Midwives`, `Ambulance staff`) 
+```
+
+. . . 
+
+__Add insight__
+```{r}
+#| eval: false
+The table below shows the total number of doctors and nurses for each organisation within `r params$ics_name`. We can see that the organisation with the most midwives is the `r pull(max_midwives, "Organisation name")` with `r round(max_midwives$Midwives)` staff.
+```
+
+## Re-run next month
+
+```{r}
+#| eval: false
+#| code-line-numbers: "8"
+---
+title: "NHS Workforce Statistics for `r params$ics_name`"
+subtitle: "Data for `r params$month_year`"
+author: "Maria Garcia"
+date: "2023-09-28"
+params:
+  ics_name: "North East and North Cumbria"
+  month_year: "May 2023"
+```
+
+##  {background-image="img/ne-may.png"}
+
+## Report a different region
+
+```{r}
+#| eval: false
+#| code-line-numbers: "7"
+---
+title: "NHS Workforce Statistics for `r params$ics_name`"
+subtitle: "Data for `r params$month_year`"
+author: "Maria Garcia"
+date: "2023-09-28"
+params:
+  ics_name: "Lancashire and South Cumbria"
+  month_year: "May 2023"
+```
+
+##  {background-image="img/nw-may.png"}
+
+## Maria is happy
+
+::: columns
+::: {.column width="60%"}
+- More reproducible workflow
+- Fewer mistakes
+- Spends less time formatting the reports manually 
+- Spends more time adding insight
+
+:::
+
+::: {.column width="40%"}
+TODO IMAGE
+:::
+:::
 
 ## Dashboards
 
-## Can I trust R?
+## Is R safe?
 
 - All code is open
-
-- Tools for validation (used in Pharma)
-
 - Testing
+- [R Validation Hub](https://www.pharmar.org/)
 
-## Using R as an organisation (Could expand?)
+## Using R as an organisation
 
-- Paids tools liek Worbench to standarise install
-- PPM to
-- Connect
-
-[Posit Partners](https://posit.co/our-partners/)
+- Posit Workbench
+- Posit Package Manager
+- Posit Connect
 
 [Working with Posit](https://posit.co/champions/working-with-it/)
+
+[Posit Partners](https://posit.co/our-partners/)
 
 
 ## Want to learn more?
 
-- R4DS
-- TidyTuesday
-- The NHS-R community
+- [R4DS book](https://r4ds.had.co.nz/)
+- [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+- The [NHS-R community](https://nhsrcommunity.com/)
