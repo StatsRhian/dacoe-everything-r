@@ -1,0 +1,268 @@
+---
+title: "Everything you wanted to know about R & Quarto"
+subtitle: "But were too afraid to ask"
+author: "[Rhian Davies](mailto:rhian.davies25@nhs.net)"
+date: 2024-10-17
+date-format: "MMM D, YYYY"
+engine: knitr
+format: su-theme-revealjs
+filters:
+  - webr
+footer: "link to slides"
+---
+
+## Hi I'm Rhian 👋
+
+:::: {.columns}
+
+::: {.column width='60%'}
+
+- Senior Data Scientist at the Strategy Unit
+- #RStats Nerd
+- Statistics PhD
+- Expert in R training & consultancy
+
+:::
+
+::: {.column width='40%'}
+
+TODO image 
+
+:::
+
+::::
+
+
+::: {.notes}
+
+:::
+
+
+## The Strategy Unit  { .inverse}
+
+Leading research, analysis and change from within the NHS
+
+![](img/logo.png)
+
+
+
+
+::: {.notes}
+
+
+* Analysis
+
+* Evaluation and impact assessment
+
+* Complex modelling
+
+* Evidence reviews
+
+* Learning & Development
+
+* HACA
+
+:::
+
+
+# Why R?
+
+## What do you want to know?
+
+Menti
+
+## What is R?
+
+:::: {.columns}
+::: {.column width='60%'}
+
+- A programming language
+- About [30 years old](https://www.jumpingrivers.com/misc/timeline/)
+
+:::
+::: {.column width='40%'}
+
+![alt](img/Rlogo.svg)
+
+:::
+::::
+
+
+
+
+## Why use R?
+
+:::{.incremental}
+- Free & open-source
+- Cross-platform
+- Diverse ecosystem of packages
+- Write your own functions RAP
+- Excellent support for statistical modelling
+- Professional graphics
+- Students learn R
+- Friendly community 💜
+:::
+
+::: {.notes}
+Many of the statistical models were written by the statisticans who developed the methods. 
+
+:::
+
+## {.inverse}
+
+![](img/cvdprevent.PNG)
+
+<!-- TODO split into two images and check with Sally & Craig -->
+
+
+## Packages 📦
+
+- Over 21,000 on CRAN
+- Many more on GitHub
+- [Diverse topics](https://cran.r-project.org/web/views/)
+
+## Who uses R?
+
+<!-- TODO example of projects in NHS --->
+
+NHS-R Community - more about them later
+
+
+## How do I get started? 🚀
+
+1. [Install R](https://cran.rstudio.com/)
+
+1. [Install RStudio](https://posit.co/download/rstudio-desktop/)
+
+You can also [try it out in Posit Cloud](https://posit.cloud/plans/free)
+
+
+::: {.aside}
+If you're already a coder, there's a new IDE called [Positron](https://github.com/posit-dev/positron) based on VS-Code which you might prefer.
+
+:::
+
+::: {.notes}
+Demo R in terminal vs RStudio
+You don't need to install R for today's session
+But I do have some snippets of code you can play with
+:::
+
+# Working with data
+
+## Who uses R?
+
+## Examples of R projects in the NHS
+
+## Silly R
+
+## Goldacre Review / RAP
+
+> It will be built using open source software for data management, analysis and visualisation (such as R or python) as this is standard, portable, and available to all for checking and re-use.
+
+
+
+## Simple demo
+
+```r
+1 + 2
+```
+
+## Reading in data
+
+- Show read_csv
+
+Works SQL / databricks / databases / SPSS etc
+API
+
+## WebR
+
+```{webr-r}
+#| message: false
+# Load library to manipualte
+library(dplyr)
+
+# Download simple dataset
+canada_births_1991_2022 <- read.csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-09/canada_births_1991_2022.csv')
+head(canada_births_1991_2022)
+```
+
+## testy
+
+```{webr-r}
+
+nrow(canada_births_1991_2022)
+```
+
+
+## Simple summaries
+
+- summarise
+
+## Group by then summarise
+
+
+## Your turn
+
+1. Instead of a mean, calculate the median for each group
+
+1. Instead of sex, group by age
+
+# Making pretty graphics
+
+## Pretty plots
+
+- BBC
+
+- John burns 
+
+- NHS plotthedots?
+
+## Maps too!
+
+- Free spatial 
+
+::: {.notes}
+
+No need for expensive GIS software
+:::
+
+
+## Shiny apps 
+
+https://shiny.rstudio.com/gallery/
+
+# Quarto
+
+These slides were made in Quarto!
+
+## Reports
+
+## Parameterisation
+
+## Dashboards
+
+## Can I trust R?
+
+- All code is open
+
+- Tools for validation (used in Pharma)
+
+- Testing
+
+## Using R as an organisation (Could expand?)
+
+- Paids tools liek Worbench to standarise install
+- PPM to
+- Connect
+
+[Posit Partners](https://posit.co/our-partners/)
+
+[Working with Posit](https://posit.co/champions/working-with-it/)
+
+
+## Want to learn more?
+
+- R4DS
+- TidyTuesday
+- The NHS-R community
