@@ -30,71 +30,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -704,7 +639,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"# Load library to manipulate\nlibrary(dplyr)\n\n# Download simple dataset\nlos_data <- read.csv('https://raw.githubusercontent.com/StatsRhian/dacoe-everything-r/refs/heads/main/LOS_data.csv')\nhead(los_data)","options":{"out-width":"700px","output":"true","comment":"","fig-width":7,"out-height":"","editor-word-wrap":"true","label":"unnamed-chunk-1","editor-font-scale":"0.5","message":"true","editor-max-height":"","results":"markup","read-only":"false","autorun":"false","fig-height":5,"context":"interactive","editor-quick-suggestions":"false","dpi":72,"warning":"false","fig-cap":"","classes":""},"id":1},{"code":"# How many columns?\nnrow(los_data)\n\n# How old is the oldest person in the dataset?\nmax(los_data$Age)\n\n# Whats the median length of stay?\nmean(los_data$LOS)","options":{"out-width":"700px","output":"true","comment":"","fig-width":7,"out-height":"","editor-word-wrap":"true","label":"unnamed-chunk-2","editor-font-scale":"0.5","message":"true","editor-max-height":"","results":"markup","read-only":"false","autorun":"false","fig-height":5,"context":"interactive","editor-quick-suggestions":"false","dpi":72,"warning":"true","fig-cap":"","classes":""},"id":2},{"code":"# Calculate the median length of stay for each Area\n\nnames(los_data) # Reminder of the column names\n\nlos_data |>\n  group_by(SOMETHING) |>\n  summarise(median_los = median(SOMETHING))","options":{"out-width":"700px","output":"true","comment":"","fig-width":7,"out-height":"","editor-word-wrap":"true","label":"unnamed-chunk-3","editor-font-scale":"0.5","message":"true","editor-max-height":"","results":"markup","read-only":"false","autorun":"false","fig-height":5,"context":"interactive","editor-quick-suggestions":"false","dpi":72,"warning":"false","fig-cap":"","classes":""},"id":3},{"code":"library(ggplot2)\nlos_data |>\n  ggplot(aes(x = Age, y = LOS)) + \n  geom_point(col = \"red\")","options":{"out-width":"700px","output":"true","comment":"","fig-width":7,"out-height":"","editor-word-wrap":"true","label":"unnamed-chunk-4","editor-font-scale":"0.5","message":"false","editor-max-height":"","dpi":72,"results":"markup","read-only":"false","autorun":"false","fig-height":5,"context":"interactive","editor-quick-suggestions":"false","output-location":"column","warning":"true","fig-cap":"","classes":""},"id":4}];
+  globalThis.qwebrCellDetails = [{"options":{"results":"markup","context":"interactive","fig-cap":"","classes":"","out-width":"700px","editor-max-height":"","fig-width":7,"editor-font-scale":"0.5","read-only":"false","output":"true","warning":"false","autorun":"false","label":"unnamed-chunk-1","dpi":72,"message":"true","editor-quick-suggestions":"false","fig-height":5,"out-height":"","editor-word-wrap":"true","comment":""},"id":1,"code":"# Load library to manipulate\nlibrary(dplyr)\n\n# Download simple dataset\nlos_data <- read.csv('https://raw.githubusercontent.com/StatsRhian/dacoe-everything-r/refs/heads/main/LOS_data.csv')\nhead(los_data)"},{"options":{"results":"markup","context":"interactive","fig-cap":"","classes":"","out-width":"700px","editor-max-height":"","fig-width":7,"editor-font-scale":"0.5","read-only":"false","output":"true","warning":"true","autorun":"false","label":"unnamed-chunk-2","dpi":72,"message":"true","editor-quick-suggestions":"false","fig-height":5,"out-height":"","editor-word-wrap":"true","comment":""},"id":2,"code":"# How many rows?\nnrow(los_data)\n\n# How old is the oldest person in the dataset?\nmax(los_data$Age)\n\n# Whats the mean length of stay?\nmean(los_data$LOS)"},{"options":{"results":"markup","context":"interactive","fig-cap":"","classes":"","out-width":"700px","editor-max-height":"","fig-width":7,"editor-font-scale":"0.5","read-only":"false","output":"true","warning":"true","autorun":"false","label":"unnamed-chunk-3","dpi":72,"message":"true","editor-quick-suggestions":"false","fig-height":5,"out-height":"","editor-word-wrap":"true","comment":""},"id":3,"code":"# How many columns?\nnrow(los_data)\n\n# How old is the oldest person in the dataset?\nmax(los_data$Age)\n\n# Whats the median length of stay?\nmean(los_data$LOS)"},{"options":{"results":"markup","context":"interactive","fig-cap":"","classes":"","out-width":"700px","editor-max-height":"","fig-width":7,"editor-font-scale":"0.5","read-only":"false","output":"true","warning":"true","autorun":"false","label":"unnamed-chunk-4","dpi":72,"message":"true","editor-quick-suggestions":"false","fig-height":5,"out-height":"","editor-word-wrap":"true","comment":""},"id":4,"code":"los_data |>\n  group_by(Sex) |>\n  summarise(mean_los = mean(LOS))"},{"options":{"results":"markup","context":"interactive","fig-cap":"","classes":"","out-width":"700px","editor-max-height":"","fig-width":7,"editor-font-scale":"0.5","read-only":"false","output":"true","warning":"false","autorun":"false","label":"unnamed-chunk-5","dpi":72,"message":"true","editor-quick-suggestions":"false","fig-height":5,"out-height":"","editor-word-wrap":"true","comment":""},"id":5,"code":"# Calculate the median length of stay for each Area\n\nnames(los_data) # Reminder of the column names\n\nlos_data |>\n  group_by(SOMETHING) |>\n  summarise(median_los = median(SOMETHING))"},{"options":{"results":"markup","context":"interactive","fig-cap":"","classes":"","out-width":"700px","editor-max-height":"","fig-width":7,"editor-font-scale":"0.5","read-only":"false","output":"true","warning":"true","autorun":"false","label":"unnamed-chunk-6","dpi":72,"message":"false","editor-quick-suggestions":"false","fig-height":"2","out-height":"","editor-word-wrap":"true","comment":""},"id":6,"code":"library(ggplot2)\nlos_data |>\n  ggplot(aes(x = Age, y = LOS)) + \n  geom_point()"},{"options":{"results":"markup","context":"interactive","fig-cap":"","classes":"","out-width":"700px","editor-max-height":"","fig-width":7,"editor-font-scale":"0.5","read-only":"false","output":"true","warning":"true","autorun":"false","label":"unnamed-chunk-7","dpi":72,"message":"false","editor-quick-suggestions":"false","fig-height":"2","out-height":"","editor-word-wrap":"true","comment":""},"id":7,"code":"library(ggplot2)\nlos_data |>\n  ggplot(aes(x = Age, y = LOS)) + \n  geom_point(col = \"red\")"}];
 
   </script>
   <script type="module">
@@ -2260,45 +2195,36 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   <p class="date">Oct 17, 2024</p>
 </section>
-<section class="slide level2">
-
+<section id="hi-im-rhian" class="slide level2">
+<h2>Hi I’m Rhian 👋</h2>
 <!--- TODO 
 
 - [ ] Maybe put exercises on another page?
 - [ ] Check for ALT 
 
 --->
-</section>
-<section id="hi-im-rhian" class="slide level2">
-<h2>Hi I’m Rhian 👋</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/rd.jpg"></p>
-<figcaption>alt</figcaption>
-</figure>
-</div>
+<div class="column" style="width:20%;">
+<p><img data-src="img/rd.jpg" alt="A profile photo of Rhian."><br>
+</p>
+</div><div class="column" style="width:20%;">
+<p><img data-src="img/logo.png" alt="Logo for The Strategy Unit"><br>
+</p>
 </div><div class="column" style="width:60%;">
 <ul>
 <li>Senior Data Scientist at the Strategy Unit</li>
-<li>#RStats Nerd</li>
-<li>Statistics PhD</li>
 <li>Expert in R training &amp; consultancy</li>
+<li>Statistics PhD</li>
+<li>Statistical Ambassador for the RSS</li>
 </ul>
 </div></div>
-</section>
-<section id="the-strategy-unit-.inverse-.center" class="slide level2">
-<h2>The Strategy Unit { .inverse, .center}</h2>
-
-<img data-src="img/logo.png" class="r-stretch"><p>There must be a better way</p>
 <aside class="notes">
 <ul>
 <li><p>Evaluation and impact assessment</p></li>
 <li><p>Complex modelling</p></li>
 <li><p>Evidence reviews</p></li>
 <li><p>Learning &amp; Development</p></li>
-<li><p>HACA</p></li>
+<li><p>HACA and NHSR conference</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -2317,9 +2243,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h1>What &amp; Why R?</h1>
 
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<iframe width="780" height="500" src="https://www.mentimeter.com/app/presentation/n/alp7qmy9cxh6exv78fcdw5f2fa2m6jux/present?question=pktjb8muvskg" title="Mentimeter"></iframe>
+<section id="what-questions-do-you-have" class="slide level2">
+<h2>What questions do <em>you</em> have? 🤔</h2>
+<ul>
+<li><a href="https://www.menti.com/al6cq199iq8n">Ask a question</a></li>
+<li><a href="https://www.mentimeter.com/app/presentation/n/alp7qmy9cxh6exv78fcdw5f2fa2m6jux/present?question=pktjb8muvskg">View all questions</a></li>
+</ul>
 </section>
 <section id="what-is-r" class="slide level2">
 <h2>What is R?</h2>
@@ -2328,15 +2257,25 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ul>
 <li>A programming language</li>
 <li>About <a href="https://www.jumpingrivers.com/misc/timeline/">30 years old</a></li>
+<li>Originally specialised in statistics but now very broad</li>
 </ul>
 </div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/Rlogo.svg"></p>
-<figcaption>alt</figcaption>
-</figure>
-</div>
+<p><img data-src="img/Rlogo.svg" alt="The logo for R programming, a large blue letter R"><br>
+</p>
 </div></div>
+<aside class="notes">
+<p>Silly R stuff too?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="why-use-r" class="slide level2">
 <h2>Why use R?</h2>
@@ -2345,7 +2284,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li class="fragment">Free &amp; open-source</li>
 <li class="fragment">Cross-platform</li>
 <li class="fragment">Diverse ecosystem of packages</li>
-<li class="fragment">Write your own functions RAP</li>
+<li class="fragment">Write your own functions</li>
 <li class="fragment">Excellent support for statistical modelling</li>
 <li class="fragment">Professional graphics</li>
 <li class="fragment">Students learn R</li>
@@ -2366,11 +2305,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-1" class="slide level2 inverse">
-<h2></h2>
-
-<!-- TODO split into two images and check with Sally & Craig -->
-<img data-src="img/cvdprevent.PNG" class="r-stretch"></section>
+<section id="reproducible-analytical-pipelines" class="slide level2">
+<h2>Reproducible Analytical Pipelines ⭐</h2>
+<blockquote>
+<p>It will be built using open source software for data management, analysis and visualisation (such as R or python) as this is standard, portable, and available to all for checking and re-use.</p>
+</blockquote>
+<p>— <a href="https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis/better-broader-safer-using-health-data-for-research-and-analysis#executive-summary:~:text=It%20will%20be%20built%20using%20open%20source%20software%20for%20data%20management%2C%20analysis%20and%20visualisation%20(such%20as%20R%20or%20python)%20as%20this%20is%20standard%2C%20portable%2C%20and%20available%20to%20all%20for%20checking%20and%20re%2Duse.">Goldacre Review 2022</a></p>
+</section>
 <section id="packages" class="slide level2">
 <h2>Packages 📦</h2>
 <ul>
@@ -2379,10 +2320,44 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li><a href="https://cran.r-project.org/web/views/">Diverse topics</a></li>
 </ul>
 </section>
+<section id="section" class="slide level2 inverse">
+<h2></h2>
+
+<img data-src="img/cvdprevent.PNG" class="r-stretch"></section>
 <section id="who-uses-r" class="slide level2">
 <h2>Who uses R?</h2>
 <!-- TODO example of projects in NHS --->
 <p>NHS-R Community - more about them later</p>
+</section>
+<section id="can-it-work-with-other-tools" class="slide level2">
+<h2>Can it work with other tools?</h2>
+<div>
+<ul>
+<li class="fragment">Yes!</li>
+</ul>
+</div>
+</section>
+<section id="can-it-work-with-my-data" class="slide level2">
+<h2>Can it work with my data?</h2>
+<div>
+<ul>
+<li class="fragment">Yes!</li>
+</ul>
+</div>
+<!-- TODO logos for different data sources --->
+<aside class="notes">
+<p>SQL databricks databases SPSS SAS CSV / Excel Cloud e.g.&nbsp;Azure API</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="how-do-i-get-started" class="slide level2">
 <h2>How do I get started? 🚀</h2>
@@ -2407,43 +2382,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       }</style></aside>
 <aside><div>
 <p>If you’re already a coder, there’s a new IDE called <a href="https://github.com/posit-dev/positron">Positron</a> based on VS-Code which you might prefer.</p>
-</div></aside></section>
-<section id="who-uses-r-1" class="slide level2">
-<h2>Who uses R?</h2>
-</section>
-<section id="can-it-work-with-other-tools" class="slide level2">
-<h2>Can it work with other tools?</h2>
-</section>
-<section id="examples-of-r-projects-in-the-nhs" class="slide level2">
-<h2>Examples of R projects in the NHS</h2>
-</section>
-<section id="silly-r" class="slide level2">
-<h2>Silly R</h2>
-</section>
-<section id="reproducible-analytical-pipelines" class="slide level2">
-<h2>Reproducible Analytical Pipelines ⭐</h2>
-<blockquote>
-<p>It will be built using open source software for data management, analysis and visualisation (such as R or python) as this is standard, portable, and available to all for checking and re-use.</p>
-</blockquote>
-<p>— <a href="https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis/better-broader-safer-using-health-data-for-research-and-analysis#executive-summary:~:text=It%20will%20be%20built%20using%20open%20source%20software%20for%20data%20management%2C%20analysis%20and%20visualisation%20(such%20as%20R%20or%20python)%20as%20this%20is%20standard%2C%20portable%2C%20and%20available%20to%20all%20for%20checking%20and%20re%2Duse.">Goldacre Review 2022</a></p>
-</section>
-<section id="can-it-work-with-my-data" class="slide level2">
-<h2>Can it work with my data?</h2>
-<!-- TODO logos for different data sources --->
-<aside class="notes">
-<p>SQL databricks databases SPSS SAS CSV / Excel Cloud e.g.&nbsp;Azure API</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
+</div></aside></section></section>
 <section>
 <section id="lets-go" class="title-slide slide level1 center">
 <h1>Let’s go! 🚀</h1>
@@ -2453,8 +2392,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2>Length of Stay data</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-905a0933fdfd68af833a" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-905a0933fdfd68af833a">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Area":["Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale"],"Age":[55,27,93,58,16,21,64,53,12,13,82,94,40,59,24,34,18,14,67,39,78,91,79,7,27,54,9,84,60,55,77,71,28,41,19,49,8,59,82,30,8,29,92,86,16,79,44,69,82,17,5,70,10,78,5,65,69,58,7,69,80,69,65,15,59,48,82,14,24,68,76,20,60,90,58,73,90,75,17,84,73,81,54,54,95,74,38,17,53,81],"Sex":["Male","Male","Female","Female","Female","Male","Female","Female","Female","Female","Female","Male","Female","Female","Female","Female","Female","Female","Female","Female","Male","Male","Female","Male","Male","Male","Male","Male","Female","Female","Female","Female","Female","Male","Female","Female","Female","Female","Male","Male","Male","Male","Male","Male","Female","Female","Female","Male","Female","Male","Female","Male","Male","Male","Female","Female","Male","Male","Male","Female","Female","Male","Female","Male","Female","Male","Female","Male","Female","Female","Male","Female","Male","Male","Male","Female","Female","Female","Male","Female","Male","Female","Female","Male","Male","Female","Female","Female","Female","Female"],"LOS":[2,1,12,4,3,1,7,7,5,2,2,4,7,2,6,5,1,18,8,2,5,9,6,1,12,8,1,9,1,5,9,3,3,3,3,6,1,2,4,2,5,1,2,11,2,5,3,11,9,2,1,3,18,1,1,6,9,3,1,7,5,6,8,1,4,5,5,2,2,5,3,3,5,7,2,1,4,7,2,4,9,7,3,3,15,4,2,3,3,8]},"columns":[{"id":"Area","name":"Area","type":"character"},{"id":"Age","name":"Age","type":"numeric"},{"id":"Sex","name":"Sex","type":"character"},{"id":"LOS","name":"LOS","type":"numeric"}],"dataKey":"073e2c191f676cb570e656fee34c1cdc"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-293739ec0b442ca48e5e" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-293739ec0b442ca48e5e">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Area":["Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale","Midsomer","Ponty Pandy","Greendale"],"Age":[55,27,93,58,16,21,64,53,12,13,82,94,40,59,24,34,18,14,67,39,78,91,79,7,27,54,9,84,60,55,77,71,28,41,19,49,8,59,82,30,8,29,92,86,16,79,44,69,82,17,5,70,10,78,5,65,69,58,7,69,80,69,65,15,59,48,82,14,24,68,76,20,60,90,58,73,90,75,17,84,73,81,54,54,95,74,38,17,53,81],"Sex":["Male","Male","Female","Female","Female","Male","Female","Female","Female","Female","Female","Male","Female","Female","Female","Female","Female","Female","Female","Female","Male","Male","Female","Male","Male","Male","Male","Male","Female","Female","Female","Female","Female","Male","Female","Female","Female","Female","Male","Male","Male","Male","Male","Male","Female","Female","Female","Male","Female","Male","Female","Male","Male","Male","Female","Female","Male","Male","Male","Female","Female","Male","Female","Male","Female","Male","Female","Male","Female","Female","Male","Female","Male","Male","Male","Female","Female","Female","Male","Female","Male","Female","Female","Male","Male","Female","Female","Female","Female","Female"],"LOS":[2,1,12,4,3,1,7,7,5,2,2,4,7,2,6,5,1,18,8,2,5,9,6,1,12,8,1,9,1,5,9,3,3,3,3,6,1,2,4,2,5,1,2,11,2,5,3,11,9,2,1,3,18,1,1,6,9,3,1,7,5,6,8,1,4,5,5,2,2,5,3,3,5,7,2,1,4,7,2,4,9,7,3,3,15,4,2,3,3,8]},"columns":[{"id":"Area","name":"Area","type":"character"},{"id":"Age","name":"Age","type":"numeric"},{"id":"Sex","name":"Sex","type":"character"},{"id":"LOS","name":"LOS","type":"numeric"}],"dataKey":"073e2c191f676cb570e656fee34c1cdc"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <aside class="notes">
@@ -2478,28 +2417,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="watch-me" class="slide level2">
 <h2>Watch me 👀</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># How many rows?</span></span>
-<span id="cb1-2"><a href=""></a><span class="fu">nrow</span>(los_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 90</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># How old is the oldest person in the dataset?</span></span>
-<span id="cb3-2"><a href=""></a><span class="fu">max</span>(los_data<span class="sc">$</span>Age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 95</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Whats the mean length of stay?</span></span>
-<span id="cb5-2"><a href=""></a><span class="fu">mean</span>(los_data<span class="sc">$</span>LOS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.788889</code></pre>
-</div>
-</div>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="your-turn" class="slide level2">
 <h2>Your turn 💻</h2>
 <p>Change the code below and click <em>Run</em></p>
-<div id="qwebr-insertion-location-2"></div>
+<div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -2518,22 +2442,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="watch-me-1" class="slide level2">
 <h2>Watch me 👀</h2>
 <p>What is the mean length of stay for each sex?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>los_data <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href=""></a>  <span class="fu">group_by</span>(Sex) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">mean_los =</span> <span class="fu">mean</span>(LOS))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  Sex    mean_los
-  &lt;chr&gt;     &lt;dbl&gt;
-1 Female     4.65
-2 Male       4.97</code></pre>
-</div>
-</div>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="your-turn-1" class="slide level2">
 <h2>Your turn 💻</h2>
-<div id="qwebr-insertion-location-3"></div>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -2553,15 +2467,6 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="making-pretty-graphics" class="title-slide slide level1 center">
 <h1>Making pretty graphics</h1>
 
-</section>
-<section id="pretty-plots" class="slide level2">
-<h2>Pretty plots</h2>
-<ul>
-<li>Many companies have adopted {ggplot2} for graphics, including the BBC and the FT</li>
-<li>BBC</li>
-<li>John burns</li>
-<li>NHS plotthedots?#</li>
-</ul>
 </section>
 <section id="professional-quality-graphics" class="slide level2">
 <h2>Professional quality graphics</h2>
@@ -2588,7 +2493,7 @@ NEW on coronavirus: many western countries may soon face Italy’s situation<br>
 <p><strong>Tweet from jburnmurdoch</strong></p>
 </div>
 <div class="callout-content">
-<div id="tweet-47478"></div><script>tweet={"url":"https:\/\/twitter.com\/jburnmurdoch\/status\/1237737352879112194","author_name":"John Burn-Murdoch","author_url":"https:\/\/twitter.com\/jburnmurdoch","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003ENEW on coronavirus: many western countries may soon face Italy’s situation\u003Cbr\u003E\u003Cbr\u003ECase numbers since outbreaks began in several countries have tracked a ~33% daily rise. This is as true for UK, France, Germany as Italy; the latter is simply further down the path \u003Ca href=\"https:\/\/t.co\/VcSZISFxzF\"\u003Ehttps:\/\/t.co\/VcSZISFxzF\u003C\/a\u003E \u003Ca href=\"https:\/\/t.co\/xM6wXuMk4n\"\u003Epic.twitter.com\/xM6wXuMk4n\u003C\/a\u003E\u003C\/p\u003E&mdash; John Burn-Murdoch (@jburnmurdoch) \u003Ca href=\"https:\/\/twitter.com\/jburnmurdoch\/status\/1237737352879112194?ref_src=twsrc%5Etfw\"\u003EMarch 11, 2020\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-47478").innerHTML = tweet["html"];</script>
+<div id="tweet-93677"></div><script>tweet={"url":"https:\/\/twitter.com\/jburnmurdoch\/status\/1237737352879112194","author_name":"John Burn-Murdoch","author_url":"https:\/\/twitter.com\/jburnmurdoch","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003ENEW on coronavirus: many western countries may soon face Italy’s situation\u003Cbr\u003E\u003Cbr\u003ECase numbers since outbreaks began in several countries have tracked a ~33% daily rise. This is as true for UK, France, Germany as Italy; the latter is simply further down the path \u003Ca href=\"https:\/\/t.co\/VcSZISFxzF\"\u003Ehttps:\/\/t.co\/VcSZISFxzF\u003C\/a\u003E \u003Ca href=\"https:\/\/t.co\/xM6wXuMk4n\"\u003Epic.twitter.com\/xM6wXuMk4n\u003C\/a\u003E\u003C\/p\u003E&mdash; John Burn-Murdoch (@jburnmurdoch) \u003Ca href=\"https:\/\/twitter.com\/jburnmurdoch\/status\/1237737352879112194?ref_src=twsrc%5Etfw\"\u003EMarch 11, 2020\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-93677").innerHTML = tweet["html"];</script>
 </div>
 </div>
 </div>
@@ -2596,44 +2501,22 @@ NEW on coronavirus: many western countries may soon face Italy’s situation<br>
 </section>
 <section id="watch-me-2" class="slide level2">
 <h2>Watch me 👀</h2>
-<p>What is the mean length of stay for each sex?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb9-2"><a href=""></a>los_data <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> LOS)) <span class="sc">+</span> </span>
-<span id="cb9-4"><a href=""></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>What is the mean length of stay for each sex?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb10-2"><a href=""></a>los_data <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> LOS)) <span class="sc">+</span> </span>
-<span id="cb10-4"><a href=""></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="your-turn-2" class="slide level2">
 <h2>Your turn 💻</h2>
-<div id="qwebr-insertion-location-4"></div>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div><div class="column" style="width:30%;">
 <ol type="1">
-<li><p>Change the the colour of the points to “blue”</p></li>
-<li><p>Add the line <code>geom_smooth(method = "lm")</code><sup>1</sup></p></li>
+<li><p>Change the the colour of the points to <code>"blue"</code></p></li>
+<li><p>Add the line <code>geom_smooth(method = "lm")</code>. You’ll need a <code>+</code> at the end of line 4.</p></li>
 </ol>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>You’ll need a <code>+</code> at the end of the previous line</p></li></ol></aside></section>
+</div></div>
+</section>
 <section id="we-can-make-maps-too" class="slide level2">
 <h2>We can make maps too</h2>
 <aside class="notes">
@@ -2654,7 +2537,7 @@ NEW on coronavirus: many western countries may soon face Italy’s situation<br>
 <h2>Shiny apps</h2>
 <ul>
 <li>Interactive web applications</li>
-<li>No need to learn</li>
+<li>No need to learn Javascript or HTML</li>
 <li><a href="https://shiny.rstudio.com/gallery/">Gallery</a></li>
 </ul>
 <aside class="notes">
@@ -2683,7 +2566,7 @@ NEW on coronavirus: many western countries may soon face Italy’s situation<br>
 <p>An <strong>open-source</strong> scientific and technical <strong>publishing</strong> system</p>
 </blockquote>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 
 <img data-src="img/quarto-flow.png" alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto." class="r-stretch quarto-figure-center"><p class="caption">Artwork from “Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst.</p><p>These slides were made in Quarto!</p>
@@ -2695,8 +2578,8 @@ NEW on coronavirus: many western countries may soon face Italy’s situation<br>
 <li class="fragment">The data was wrong - can you re-run the analysis?</li>
 <li class="fragment">Your manager loves it - can you do it for another region?</li>
 <li class="fragment">Next month - do it all again.</li>
+<li class="fragment">There must be a better way</li>
 </ul>
-<p>There must be a better way</p>
 </div>
 </section>
 <section id="example-report" class="slide level2">
@@ -2722,13 +2605,13 @@ NEW on coronavirus: many western countries may soon face Italy’s situation<br>
 <section id="re-run-next-month" class="slide level2">
 <h2>Re-run next month</h2>
 </section>
-<section id="section-3" class="slide level2" data-background-image="img/ne-may.png">
+<section id="section-2" class="slide level2" data-background-image="img/ne-may.png">
 <h2></h2>
 </section>
 <section id="report-a-different-region" class="slide level2">
 <h2>Report a different region</h2>
 </section>
-<section id="section-4" class="slide level2" data-background-image="img/nw-may.png">
+<section id="section-3" class="slide level2" data-background-image="img/nw-may.png">
 <h2></h2>
 </section>
 <section id="maria-is-happy" class="slide level2">
@@ -2779,7 +2662,6 @@ NEW on coronavirus: many western countries may soon face Italy’s situation<br>
 </div>
 </div>
 </section></section>
-
     </div>
   </div>
 

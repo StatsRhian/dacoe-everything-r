@@ -12,6 +12,8 @@ filters:
 footer: "[statsrhian.github.io/dacoe-everything-r](https://statsrhian.github.io/dacoe-everything-r)"
 ---
 
+## Hi I'm Rhian 👋
+
 <!--- TODO 
 
 - [ ] Maybe put exercises on another page?
@@ -19,35 +21,29 @@ footer: "[statsrhian.github.io/dacoe-everything-r](https://statsrhian.github.io/
 
 --->
 
-## Hi I'm Rhian 👋
-
 :::: {.columns}
 
-::: {.column width='40%'}
+::: {.column width='20%'}
 
-![alt](img/rd.jpg)
+![A profile photo of Rhian.](img/rd.jpg)\
+:::
+
+::: {.column width='20%'}
+
+![Logo for The Strategy Unit](img/logo.png)\
 
 :::
 
 ::: {.column width='60%'}
 
 - Senior Data Scientist at the Strategy Unit
-- #RStats Nerd
-- Statistics PhD
 - Expert in R training & consultancy
+- Statistics PhD
+- Statistical Ambassador for the RSS
+
 :::
 
 ::::
-
-
-
-## The Strategy Unit  { .inverse, .center}
-
-
-![](img/logo.png)
-
-
-There must be a better way
 
 
 ::: {.notes}
@@ -59,19 +55,16 @@ There must be a better way
 
 * Learning & Development
 
-* HACA
-
+* HACA and NHSR conference
 :::
 
 
 # What & Why R? {.inverse}
 
-## 
+## What questions do _you_ have? 🤔
 
-
-```{=html}
-<iframe width="780" height="500" src="https://www.mentimeter.com/app/presentation/n/alp7qmy9cxh6exv78fcdw5f2fa2m6jux/present?question=pktjb8muvskg" title="Mentimeter"></iframe>
-```
+- [Ask a question](https://www.menti.com/al6cq199iq8n)
+- [View all questions](https://www.mentimeter.com/app/presentation/n/alp7qmy9cxh6exv78fcdw5f2fa2m6jux/present?question=pktjb8muvskg)
 
 
 ## What is R?
@@ -81,16 +74,21 @@ There must be a better way
 
 - A programming language
 - About [30 years old](https://www.jumpingrivers.com/misc/timeline/)
+- Originally specialised in statistics but now very broad
 
 :::
 ::: {.column width='40%'}
 
-![alt](img/Rlogo.svg)
+![The logo for R programming, a large blue letter R](img/Rlogo.svg)\
 
 :::
 ::::
 
 
+:::{.notes}
+Silly R stuff too?
+
+:::
 
 
 ## Why use R?
@@ -99,7 +97,7 @@ There must be a better way
 - Free & open-source
 - Cross-platform
 - Diverse ecosystem of packages
-- Write your own functions RAP
+- Write your own functions
 - Excellent support for statistical modelling
 - Professional graphics
 - Students learn R
@@ -108,15 +106,13 @@ There must be a better way
 
 ::: {.notes}
 Many of the statistical models were written by the statisticans who developed the methods. 
-
 :::
 
-## {.inverse}
+## Reproducible Analytical Pipelines ⭐
 
-![](img/cvdprevent.PNG)
+> It will be built using open source software for data management, analysis and visualisation (such as R or python) as this is standard, portable, and available to all for checking and re-use. 
 
-<!-- TODO split into two images and check with Sally & Craig -->
-
+--- [Goldacre Review 2022](https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis/better-broader-safer-using-health-data-for-research-and-analysis#executive-summary:~:text=It%20will%20be%20built%20using%20open%20source%20software%20for%20data%20management%2C%20analysis%20and%20visualisation%20(such%20as%20R%20or%20python)%20as%20this%20is%20standard%2C%20portable%2C%20and%20available%20to%20all%20for%20checking%20and%20re%2Duse.)
 
 ## Packages 📦
 
@@ -124,12 +120,42 @@ Many of the statistical models were written by the statisticans who developed th
 - Many more on GitHub
 - [Diverse topics](https://cran.r-project.org/web/views/)
 
+## {.inverse}
+
+![](img/cvdprevent.PNG)
+
 ## Who uses R?
 
 <!-- TODO example of projects in NHS --->
 
 NHS-R Community - more about them later
 
+
+## Can it work with other tools?
+
+::: {.incremental}
+ - Yes!
+:::
+
+## Can it work with my data?
+
+::: {.incremental}
+ - Yes!
+:::
+
+<!-- TODO logos for different data sources --->
+
+:::{.notes}
+
+SQL
+databricks
+databases
+SPSS
+SAS
+CSV / Excel
+Cloud  e.g. Azure
+API
+:::
 
 ## How do I get started? 🚀
 
@@ -149,40 +175,6 @@ If you're already a coder, there's a new IDE called [Positron](https://github.co
 Demo R in terminal vs RStudio
 You don't need to install R for today's session
 But I do have some snippets of code you can play with
-:::
-
-
-## Who uses R?
-
-
-
-## Can it work with other tools?
-
-
-## Examples of R projects in the NHS
-
-## Silly R
-
-## Reproducible Analytical Pipelines ⭐
-
-> It will be built using open source software for data management, analysis and visualisation (such as R or python) as this is standard, portable, and available to all for checking and re-use. 
-
---- [Goldacre Review 2022](https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis/better-broader-safer-using-health-data-for-research-and-analysis#executive-summary:~:text=It%20will%20be%20built%20using%20open%20source%20software%20for%20data%20management%2C%20analysis%20and%20visualisation%20(such%20as%20R%20or%20python)%20as%20this%20is%20standard%2C%20portable%2C%20and%20available%20to%20all%20for%20checking%20and%20re%2Duse.)
-
-## Can it work with my data?
-
-<!-- TODO logos for different data sources --->
-
-:::{.notes}
-
-SQL
-databricks
-databases
-SPSS
-SAS
-CSV / Excel
-Cloud  e.g. Azure
-API
 :::
 
 # Let's go! 🚀
@@ -219,8 +211,7 @@ head(los_data)
 
 ## Watch me 👀
 
-```{r}
-#| echo: true
+```{webr-r}
 # How many rows?
 nrow(los_data)
 
@@ -254,8 +245,7 @@ Capitalisation matters!
 ## Watch me 👀
 
 What is the mean length of stay for each sex?
-```{r}
-#| echo: true
+```{webr-r}
 los_data |>
   group_by(Sex) |>
   summarise(mean_los = mean(LOS))
@@ -280,16 +270,7 @@ Feel free to try grouping by other variables, or using other summarisation funct
 
 # Making pretty graphics
 
-## Pretty plots
-
-- Many companies have adopted {ggplot2} for graphics, including the BBC and the FT
-- BBC
-- John burns 
-- NHS plotthedots?#
-
-
 ## Professional quality graphics
-
 
 ![alt](img/bbc.png)
 
@@ -300,25 +281,14 @@ Feel free to try grouping by other variables, or using other summarisation funct
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">NEW on coronavirus: many western countries may soon face Italy’s situation<br><br>Case numbers since outbreaks began in several countries have tracked a ~33% daily rise. This is as true for UK, France, Germany as Italy; the latter is simply further down the path <a href="https://t.co/VcSZISFxzF">https://t.co/VcSZISFxzF</a> <a href="https://t.co/xM6wXuMk4n">pic.twitter.com/xM6wXuMk4n</a></p>&mdash; John Burn-Murdoch (@jburnmurdoch) <a href="https://twitter.com/jburnmurdoch/status/1237737352879112194?ref_src=twsrc%5Etfw">March 11, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
 
 
-
-
 ::: {.twitter user=jburnmurdoch status_id=1237737352879112194}
 :::
 
 ## Watch me 👀
 
-What is the mean length of stay for each sex?
-```{r}
-#| echo: true
-library(ggplot2)
-los_data |>
-  ggplot(aes(x = Age, y = LOS)) + 
-  geom_point()
-```
-
-What is the mean length of stay for each sex?
-```{r}
-#| echo: true
+```{webr-r}
+#| message: false
+#| fig-height: 2
 library(ggplot2)
 los_data |>
   ggplot(aes(x = Age, y = LOS)) + 
@@ -327,18 +297,31 @@ los_data |>
 
 ## Your turn 💻
 
+:::: {.columns}
+
+::: {.column width='70%'}
+
 ```{webr-r}
 #| message: false
-#| output-location: column
+#| fig-height: 2
 library(ggplot2)
 los_data |>
   ggplot(aes(x = Age, y = LOS)) + 
   geom_point(col = "red")
 ```
 
-1. Change the the colour of the points to "blue"
+:::
 
-1. Add the line `geom_smooth(method = "lm")`^[You'll need a `+` at the end of the previous line]
+::: {.column width='30%'}
+
+1. Change the the colour of the points to `"blue"`
+
+1. Add the line `geom_smooth(method = "lm")`. You'll need a `+` at the end of line 4.
+
+:::
+
+::::
+
 
 ## We can make maps too
 
@@ -356,9 +339,8 @@ No need for expensive GIS software
 ## Shiny apps 
 
 - Interactive web applications
-- No need to learn
+- No need to learn Javascript or HTML
 - [Gallery](https://shiny.rstudio.com/gallery/)
-
 
 :::{.notes}
 
@@ -386,9 +368,7 @@ These slides were made in Quarto!
 - The data was wrong - can you re-run the analysis?
 - Your manager loves it - can you do it for another region?
 - Next month - do it all again.
-
-
-There must be a better way
+- There must be a better way
 
 :::
 
